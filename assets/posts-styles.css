@@ -1,32 +1,5 @@
 @import url(base.css);
 
-div.page-header {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    /* z-index: var(--z-fixed); */
-
-    /* border: 1px solid red; */
-}
-
-.profile-pic-wrapper {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid var(--clr-off-white);
-    background-size: cover;
-    background-position: center;
-}
-
-.page-header h1 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--clr-white);
-}
-
-.btn-back-wrapper {
-    cursor: pointer;
-    width: 32px;
-}
 
 /* Hide scrollbar for Firefox */
 div.posts-container::-webkit-scrollbar {

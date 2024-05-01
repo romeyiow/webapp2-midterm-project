@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   /* ================ Colors ================ */
   --clr-red: #fe2d55;
@@ -52,7 +53,7 @@ body {
   font-weight: var(--fw-regular);
 
   background-color: var(--clr-black);
-  background: linear-gradient(45deg,  #544E94,#92DDC2);
+  background: linear-gradient(45deg, #544E94, #92DDC2);
   color: var(--clr-black);
   text-rendering: optimizeSpeed;
 
@@ -69,7 +70,9 @@ body {
   /* transition: all 0.3s ease;  */
   /* border: 3px dotted red; */
 }
-div,form{
+
+div,
+form {
   width: 100%;
   height: max-content;
 }
@@ -82,6 +85,7 @@ div,form{
   align-items: center;
   justify-content: center;
 }
+
 /* ================ MAIN CSS ================ */
 section.pseudo-screen {
   border: 1px solid white;
@@ -91,11 +95,11 @@ section.pseudo-screen {
   width: 375px;
   height: 667px;
   background-color: #0A0171;
-  background-color: rgba(255, 255, 255, 0.1); 
+  background-color: rgba(255, 255, 255, 0.1);
   /* background-color: rgba(0, 0, 0, 0.2); */
-  backdrop-filter: blur(10px); 
-  -webkit-backdrop-filter: blur(30px) ;
-  
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(30px);
+
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   /* box-shadow: 30px 30px 35px #0A017170; */
   /* box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1); */
@@ -105,7 +109,8 @@ section.pseudo-screen {
   align-items: center;
   /* justify-content: center; */
 }
-div.screen-info{
+
+div.screen-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -113,7 +118,7 @@ div.screen-info{
   /* border: 1px solid red; */
 }
 
-.left-infos{
+.left-infos {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -122,7 +127,8 @@ div.screen-info{
 
   /* border: 1px solid red; */
 }
-.right-infos{
+
+.right-infos {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -131,34 +137,38 @@ div.screen-info{
   /* border: 1px solid red; */
 }
 
-div.greetings{
+div.greetings {
   /* border: 1px solid red; */
   margin-top: 40px;
   gap: 15px;
   color: var(--clr-white);
 }
 
-.greetings h1{
+.greetings h1 {
   font-size: 20px;
   margin-top: 18px;
   font-weight: bold;
 }
-.greetings p{
-  font-weight:300;
+
+.greetings p {
+  font-weight: 300;
   font-size: 16px;
 }
 
-div.form-wrapper{
+div.form-wrapper {
   margin-top: 30px;
 
 
 
   /* border: 1px solid red; */
 }
-form{
+
+form {
   gap: 15px;
 }
-form input, form button{
+
+form input,
+form button {
   height: 58px;
   width: 100%;
   padding: 12px 18px;
@@ -169,20 +179,25 @@ form input, form button{
   background-color: transparent;
 
 }
-input::placeholder{
+
+input::placeholder {
   color: var(--clr-off-white);
 }
 
-form input:focus{
+form button:focus,
+form input:focus {
   outline: none;
 }
 
-form button{
+form button:focus {
+  border:2px solid white;
+}
+
+form button {
   margin-top: 15px;
   background-color: #2BC990;
   color: var(--clr-white);
   font-size: 20px;
   font-weight: bold;
-  border-color:#2BC990;
+  border-color: #2BC990;
 }
-

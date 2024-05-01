@@ -4,44 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .posts-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f9f9ff;
-            cursor: pointer;
-        }
-
-        li:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/base.css">
 </head>
 <body>
-    <div class="posts-container">
+    <section class="pseudo-screen">
+      <div class="screen-info">
+        <div class="left-infos">
+          <img src="assets/images/vec-time.png" alt="" />
+          <img src="assets/images/vec-4g.png" alt="" />
+        </div>
+        <div class="right-infos">
+          <img src="assets/images/vec-signal.png" alt="" />
+          <img src="assets/images/vec-wifi.png" alt="" />
+          <img src="assets/images/vec-battery.png" alt="" />
+        </div>
+      </div>
+      <div class="posts-container">
         <h1>Posts Page</h1>
         <ul id="postLists"></ul>
     </div>
-</body>
+    </section>
+  </body>
 <script>
     // Posts Page
     document.addEventListener("DOMContentLoaded", function() {

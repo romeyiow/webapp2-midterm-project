@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1Welcome,
+    sign up to continue.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  
+</head>
+
+<body>
+  <section class="pseudo-screen">
+    <div class="screen-info">
+      <div class="left-infos">
+        <img src="assets/images/vec-time.png" alt="" />
+        <img src="assets/images/vec-4g.png" alt="" />
+      </div>
+      <div class="right-infos">
+        <img src="assets/images/vec-signal.png" alt="" />
+        <img src="assets/images/vec-wifi.png" alt="" />
+        <img src="assets/images/vec-battery.png" alt="" />
+      </div>
+    </div>
+    <div class="greetings flex-col-center-center">
+      <img src="assets/images/illust-login.png" alt="" />
+      <h1>Welcome Back!</h1>
+      <p>Please log in to your existing account</p>
+    </div>
+    <div class="form-wrapper flex-col-center-center">
+      <form id="loginForm" class="flex-col-center-center">
+        <input type="text" id="username" placeholder="Your username" required />
+        <input type="password" id="password" placeholder="Your password" required />
+        <button id="submit">Log In</button>
+      </form>
+    </div>
+  </section>
+</body>
+<script>
+  document
+    .getElementById("loginForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((users) => {
+          const user = users.find((user) => user.username === username);
+
+          if (user) {
+            //experimental
+            const userId = user.id;
+
+            if (password === "secret123") {
+              window.location.href = `posts.html?userId=${userId}`;
+            } else {
+              alert("Incorrect password!");
+            }
+          } else {
+            alert("User not found!");
+          }
+        })
+        .catch((error) => alert("Error fetching users:", error));
+    });
+</script>
+</html>

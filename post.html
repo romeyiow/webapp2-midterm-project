@@ -1,63 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Post Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+    <link rel="stylesheet" href="assets/base.css" />
+    <link rel="stylesheet" href="assets/post-styles.css" />
+  </head>
+  <body>
+    <section class="pseudo-screen">
+      <div class="screen-info">
+        <div class="left-infos">
+          <img src="assets/images/vec-time.png" alt="" />
+          <img src="assets/images/vec-4g.png" alt="" />
+        </div>
+        <div class="right-infos">
+          <img src="assets/images/vec-signal.png" alt="" />
+          <img src="assets/images/vec-wifi.png" alt="" />
+          <img src="assets/images/vec-battery.png" alt="" />
+        </div>
+      </div>
+      <div class="page-header flex-row-center-between">
+        <div id="back-btn" class="btn-back-wrapper flex-col-center-center">
+          <img src="assets/images/icon-left-arrow.png" alt="" />
+        </div>
+        <h1>Post</h1>
+        <div class="profile-pic-wrapper" style="visibility: hidden"></div>
+      </div>
 
-        .post-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f9f9ff;
-            cursor: pointer;
-        }
-
-        li:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
-<body>
-    <div class="post-container">
-        <h1>Post Page</h1>
-        <div id="postDetails"></div>
-    </div>
-</body>
-<script>
-    // Post Page
-    document.addEventListener("DOMContentLoaded", function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get("id");
-
-        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-            .then(response => response.json())
-            .then(post => {
-                const postDetails = document.getElementById("postDetails");
-                postDetails.innerHTML = `
-                    <h3>Title: ${post.title}</h3>
-                    <p>Body: ${post.body}</p>
+      <div class="post-card" id="post-card"></div>
+    </section>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      async function getData(ID) {
+        var DPUrl = await fetch(
+          `https://jsonplaceholder.typicode.com/photos/${ID}`
+        ).then((response) => response.json());
+        var VisualUrl = await fetch(
+          `https://jsonplaceholder.typicode.com/photos/${20 + ID}`
+        ).then((response) => response.json());
+        var userProfile = await fetch(
+          `https://jsonplaceholder.typicode.com/users/${ID}`
+        ).then((response) => response.json());
+        var post = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${ID}`
+        ).then((response) => response.json());
+        var name = userProfile.name;
+        var username = userProfile.email.split("@")[1];
+        var body = post.body[0].toUpperCase() + post.body.slice(1);
+        const postDetails = document.getElementById("post-card");
+        postDetails.innerHTML = `
+            <div class="card-poser-info">
+                <div class="profile-picture" style="background-image:url('${DPUrl.thumbnailUrl}');"></div>
+                <div class="profile-names">
+                    <h3>${name}</h3>
+                    <span>@${username}</span>
+                </div>
+                </div>
+                <div class="title-post">
+                <h1> ${post.title}</h1>
+                </div>
+                <div class="visuals-post" style="background-image:url('${VisualUrl.url}');"></div>
+                <div class="content-post">
+                <p>
+                    ${body}.
+                </p>
+            </div>
                 `;
-            })
-            .catch(error => console.error("Error fetching posts:", error));
+      }
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get("id");
+      getData(postId);
     });
-</script>
+
+    const backBtn = document.getElementById("back-btn");
+    backBtn.addEventListener("click", () => {
+      window.location.href = `posts.html`;
+    });
+  </script>
 </html>
